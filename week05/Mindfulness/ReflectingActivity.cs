@@ -44,10 +44,6 @@ public class ReflectingActivity : Activity
     public void Run()
     {
         DisplayStartMessage();
-        Console.WriteLine("Get ready to reflect...");
-        ShowSpinner(3);
-        Console.Clear();
-
         GetRandomPrompt();
         Console.WriteLine("When you have something in mind, press Enter to continue.");
         Console.ReadLine();
