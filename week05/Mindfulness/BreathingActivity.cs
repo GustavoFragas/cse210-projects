@@ -1,20 +1,27 @@
 public class BreathingActivity : Activity
 {
-    public BreathingActivity() : base("Breathing Activity", "This activity will help you relax by guiding you through slow breathing. Clear your mind and focus on your breath.", 60)
+    public BreathingActivity() : base("Breathing Activity", "This activity will help you relax by walking through breathing in and out slowly. Clear your mind and focus on your breath.", 30)
     {
     }
 
-    public void run()
+    public void Run()
     {
         DisplayStartMessage();
         Console.WriteLine("Get ready to begin...");
         ShowSpinner(3);
+        Console.Clear();
 
-        Console.WriteLine("\nBreathe in...");
-        ShowCountdown(4);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
 
-        Console.WriteLine("\nBreathe out...");
-        ShowCountdown(6);
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("\nBreathe in...");
+            ShowCountdown(4);
+
+            Console.WriteLine("\nBreathe out...");
+            ShowCountdown(6);
+        }
 
         DisplayEndingMessage();
     }

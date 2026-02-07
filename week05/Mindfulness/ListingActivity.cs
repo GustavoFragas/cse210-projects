@@ -1,15 +1,17 @@
-public class ListingActivity
+using System.ComponentModel.DataAnnotations;
+
+public class ListingActivity : Activity
 {
     private int _count;
     private string[] _prompts = {
-        "List as many things as you can that you are grateful for.",
-        "List as many personal strengths as you can.",
-        "List as many achievements you are proud of.",
-        "List as many people who have positively influenced your life.",
-        "List as many activities that make you happy."
+        "--- List as many things as you can that you are grateful for.",
+        "--- List as many personal strengths as you can. ---",
+        "--- List as many achievements you are proud of. ---",
+        "--- List as many people who have positively influenced your life. ---",
+        "--- List as many activities that make you happy. ---"
     };
 
-    public ListingActivity()
+    public ListingActivity() : base("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 30)
     {
         _count = 0;
     }
@@ -24,9 +26,9 @@ public class ListingActivity
     public List<string> GetListFromUser()
     {
         List<string> userList = new List<string>();
-        Console.WriteLine("You have 30 seconds to list as many items as you can. Start listing now:");
+        Console.WriteLine($"You have {_duration} seconds to list as many items as you can. Start listing now:");
 
-        DateTime endTime = DateTime.Now.AddSeconds(30);
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
         while (DateTime.Now < endTime)
         {
             if (Console.KeyAvailable)
@@ -43,11 +45,12 @@ public class ListingActivity
         return userList;
     }
 
-    public void run()
+    public void Run()
     {
-        Console.WriteLine("Welcome to the Listing Activity!");
+        DisplayStartMessage();
         GetRandomPrompt();
         List<string> userList = GetListFromUser();
         Console.WriteLine($"\nYou listed {_count} items. Well done!");
+        DisplayEndingMessage();
     }
 }
