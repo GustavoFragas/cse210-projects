@@ -1,0 +1,4 @@
+0
+SimpleGoal:Knowing to drive,Auto escola,5,False
+EternalGoal:Read the scriptures,(nephi),50
+ChecklistGoal:P,sda,50,12,5,0
